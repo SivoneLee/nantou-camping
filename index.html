@@ -45,21 +45,22 @@
       margin: 0 auto;
     }
 
-    /* Hero 區塊：大照片 */
+    /* Hero 區塊：大照片（下方不再圓角） */
 
     .hero {
       position: relative;
-      height: 64vh;
-      min-height: 380px;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
+      height: 56vh;
+      min-height: 340px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
       overflow: hidden;
       background:
         linear-gradient(145deg, rgba(18,50,40,0.45), rgba(90,122,103,0.18)),
         url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80");
       background-size: cover;
       background-position: center;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+      box-shadow: none;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .hero-inner {
@@ -228,7 +229,7 @@
       padding: 0 16px 32px;
     }
 
-    /* 每日區塊：不再是卡片，而是簡潔的段落＋底線 */
+    /* 每日區塊：簡潔段落＋底線 */
 
     section.day-card {
       padding: 18px 0 18px;
@@ -329,33 +330,33 @@
       color: var(--muted);
     }
 
-    /* 時間軸風格 */
+    /* 時間軸風格：左邊時間，右邊內容 */
 
     .card-list {
-      margin-top: 6px;
-      padding-left: 14px;
+      margin-top: 8px;
+      padding-left: 26px;
       border-left: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .item-card {
       position: relative;
-      padding-left: 12px;
-      padding-bottom: 4px;
-      background: transparent;
-      border: none;
+      padding-left: 0;
+      padding-bottom: 6px;
       display: flex;
       flex-direction: column;
       gap: 4px;
+      background: transparent;
+      border: none;
     }
 
     .item-card::before {
       content: "";
       position: absolute;
       left: -7px;
-      top: 9px;
+      top: 11px;
       width: 9px;
       height: 9px;
       border-radius: 999px;
@@ -363,9 +364,7 @@
       background: #ffffff;
     }
 
-    .strip {
-      display: none; /* 不再需要彩色側邊條 */
-    }
+    .strip { display: none; }
 
     .item-body {
       display: flex;
@@ -375,21 +374,31 @@
     }
 
     .item-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
       align-items: baseline;
+      column-gap: 10px;
+    }
+
+    .item-time {
+      grid-column: 1;
+      font-size: 14px;
+      font-weight: 600;
+      color: #29332f;
+      white-space: nowrap;
     }
 
     .item-title {
+      grid-column: 2;
       font-weight: 600;
       font-size: 14px;
     }
 
-    .item-time {
-      font-size: 11px;
-      color: var(--muted);
-      white-space: nowrap;
+    .item-meta,
+    .item-notes,
+    .tag-row,
+    .nav-btn {
+      margin-left: 64px; /* 對齊標題欄 */
     }
 
     .item-meta {
@@ -489,9 +498,7 @@
 
     @media (min-width: 768px) {
       .hero {
-        height: 76vh;
-        border-bottom-left-radius: 28px;
-        border-bottom-right-radius: 28px;
+        height: 60vh;
       }
       .hero-inner {
         padding: 24px 32px 32px;
