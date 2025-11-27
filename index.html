@@ -4,16 +4,22 @@
   <meta charset="utf-8">
   <title>南投露自在 5 天 4 夜行程小工具</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 載入 Noto Sans TC：中文＆英文都乾淨簡潔 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #ffffff;
-      --fg: #222827;
-      --muted: #6f7774;
+      --fg: #222627;
+      --muted: #8a9290;
       --accent: #356b5b;
       --accent-soft: #dbe8e1;
       --card-bg: #ffffff;
-      --border-soft: #d3ddd6;
-      --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+      --border-soft: #dde3de;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.06);
 
       --tag-eat: #f6d8c3;
       --tag-order: #f6efc3;
@@ -30,9 +36,10 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+      font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
       background: #ffffff;
       color: var(--fg);
+      line-height: 1.6;
     }
 
     .page {
@@ -51,7 +58,7 @@
       overflow: hidden;
       background:
         /* 淡淡綠色漸層讓文字清楚 */
-        linear-gradient(145deg, rgba(18,50,40,0.45), rgba(90,122,103,0.18)),
+        linear-gradient(145deg, rgba(18,50,40,0.40), rgba(90,122,103,0.20)),
         /* 北歐森林照片：之後換成自己的圖就改這一行 url */
         url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80");
       background-size: cover;
@@ -62,7 +69,7 @@
     .hero-inner {
       position: absolute;
       inset: 0;
-      padding: 18px 18px 26px;
+      padding: 20px 18px 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -75,50 +82,73 @@
       align-items: center;
       gap: 10px;
       font-size: 11px;
-      opacity: 0.95;
+      opacity: 0.96;
     }
 
     .hero-badge {
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 999px;
-      background: rgba(8,20,16,0.35);
-      border: 1px solid rgba(198,211,202,0.6);
+      background: rgba(10,24,19,0.42);
+      border: 1px solid rgba(198,211,202,0.7);
     }
 
     .hero-title-block {
-      max-width: 320px;
+      max-width: 360px;
       margin-top: auto;
     }
 
     .hero-title {
-      font-size: 28px;
-      line-height: 1.16;
-      letter-spacing: .06em;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: .08em;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .hero-subtitle {
-      font-size: 13px;
+      font-size: 14px;
       opacity: 0.9;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
     .hero-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin-bottom: 18px;
     }
 
     .hero-chip {
-      font-size: 10px;
-      padding: 4px 9px;
+      font-size: 11px;
+      padding: 4px 11px 4px 6px;
       border-radius: 999px;
-      background: rgba(244,248,245,0.15);
+      background: rgba(244,248,245,0.10);
       border: 1px solid rgba(210,222,214,0.7);
       backdrop-filter: blur(6px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
+
+    .chip-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1.4px solid rgba(240,246,242,0.95);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(232,243,237,0.92);
+      color: #304f40;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    }
+
+    .chip-icon-forest { background: rgba(226,241,233,0.94); }
+    .chip-icon-solo { background: rgba(236,241,245,0.94); }
+    .chip-icon-health { background: rgba(238,245,234,0.94); }
+    .chip-icon-drive { background: rgba(238,243,247,0.94); }
 
     .hero-actions {
       display: flex;
@@ -132,7 +162,7 @@
     .hero-cta {
       border-radius: 999px;
       border: none;
-      padding: 8px 16px;
+      padding: 9px 18px;
       font-size: 13px;
       font-weight: 600;
       background: #f5f7f4;
@@ -144,28 +174,28 @@
     }
 
     .hero-cta span {
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .hero-scroll-hint {
       display: flex;
       align-items: center;
       gap: 4px;
+      opacity: 0.9;
     }
 
     /* Day tabs + 內容 */
 
     .tabs-wrapper {
-      margin-top: 8px;       /* 不再疊到 hero 上 */
+      margin-top: 10px;
       padding-inline: 12px;
     }
 
     .day-tabs {
       display: flex;
       overflow-x: auto;
-      gap: 8px;
-      padding: 8px 4px 12px;
-      background: transparent;
+      gap: 10px;
+      padding: 10px 4px 14px;
       scrollbar-width: none;
     }
     .day-tabs::-webkit-scrollbar { display: none; }
@@ -173,11 +203,11 @@
     .day-tab {
       flex: 0 0 auto;
       border-radius: 999px;
-      padding: 6px 12px;
+      padding: 7px 14px;
       font-size: 12px;
       border: 1px solid rgba(80,112,98,0.3);
       color: var(--muted);
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.96);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -203,12 +233,12 @@
     }
 
     section.day-card {
-      background: rgba(255,255,255,0.98);
+      background: rgba(255,255,255,0.99);
       border-radius: 22px;
       box-shadow: var(--shadow-soft);
-      margin-bottom: 18px;
-      padding: 14px 14px 12px;
-      border: 1px solid rgba(189,203,195,0.9);
+      margin-bottom: 22px;
+      padding: 16px 14px 14px;
+      border: 1px solid rgba(210,218,212,0.95);
       opacity: 0;
       transform: translateY(16px);
       transition: opacity .45s ease, transform .45s ease;
@@ -223,32 +253,32 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 10px;
+      gap: 14px;
+      margin-bottom: 12px;
     }
 
     .day-header-main {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
     }
 
     .day-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: .03em;
+      letter-spacing: .04em;
     }
 
     .day-subtitle {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
     }
 
     .weather-badge {
-      min-width: 130px;
+      min-width: 132px;
       border-radius: 14px;
-      padding: 6px 8px;
-      background: linear-gradient(145deg, #e2ece6, #f0f6f2);
+      padding: 6px 9px;
+      background: linear-gradient(145deg, #e4ede7, #f2f7f3);
       display: flex;
       flex-direction: column;
       gap: 2px;
@@ -284,7 +314,7 @@
     .chip-location {
       font-size: 11px;
       border-radius: 999px;
-      padding: 2px 8px;
+      padding: 3px 9px;
       background: var(--accent-soft);
       color: var(--accent);
       display: inline-flex;
@@ -298,25 +328,25 @@
 
     .badge-elev {
       font-size: 10px;
-      padding: 2px 6px;
+      padding: 3px 7px;
       border-radius: 999px;
-      border: 1px solid rgba(99,129,116,0.3);
+      border: 1px solid rgba(130,150,139,0.4);
       color: var(--muted);
-      background: rgba(250,252,250,0.9);
+      background: rgba(250,252,250,0.95);
     }
 
     .card-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
       margin-top: 6px;
     }
 
     .item-card {
       border-radius: 16px;
-      padding: 9px 10px;
-      border: 1px solid rgba(210,219,214,0.95);
-      background: rgba(250,252,251,0.97);
+      padding: 10px 11px;
+      border: 1px solid rgba(221,228,222,0.95);
+      background: rgba(250,252,251,0.98);
       display: grid;
       grid-template-columns: auto 1fr;
       column-gap: 10px;
@@ -329,14 +359,14 @@
       margin-top: 2px;
     }
 
-    .strip-sight { background: linear-gradient(180deg,#86a68d,#4d7a63); }
+    .strip-sight { background: linear-gradient(180deg,#7fa48a,#4d7a63); }
     .strip-food { background: linear-gradient(180deg,#f3b48a,#c97a39); }
     .strip-transport { background: linear-gradient(180deg,#9eb4c9,#5b7a9d); }
 
     .item-body {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
       font-size: 13px;
     }
 
@@ -349,6 +379,7 @@
 
     .item-title {
       font-weight: 600;
+      font-size: 14px;
     }
 
     .item-time {
@@ -363,16 +394,16 @@
     }
 
     .item-notes {
-      font-size: 12px;
-      line-height: 1.4;
-      color: #37413f;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #343c3a;
     }
 
     .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
-      margin-top: 3px;
+      margin-top: 4px;
     }
 
     .tag {
@@ -392,11 +423,11 @@
       align-self: flex-start;
       border-radius: 999px;
       border: none;
-      padding: 4px 10px;
+      padding: 5px 11px;
       font-size: 11px;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       background: #1b4e3b;
       color: #f6fbf8;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
@@ -406,10 +437,25 @@
       font-size: 12px;
     }
 
+    /* 導航按鈕的小圓圖示（北歐手繪風） */
+    .nav-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1.3px solid rgba(231,241,235,0.96);
+      background: rgba(225,237,231,0.98);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #163428;
+    }
+
     .legend {
       margin: 10px 8px 4px;
-      padding-top: 8px;
-      border-top: 1px dashed rgba(170,184,176,0.7);
+      padding-top: 9px;
+      border-top: 1px dashed rgba(188,200,193,0.9);
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
@@ -423,7 +469,7 @@
       gap: 4px;
       border-radius: 999px;
       padding: 2px 6px;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       border: 1px solid rgba(210,219,214,0.9);
     }
 
@@ -432,7 +478,7 @@
     }
 
     footer.app-footer {
-      padding: 0 16px 20px;
+      padding: 0 16px 22px;
       font-size: 10px;
       color: var(--muted);
       text-align: center;
@@ -445,7 +491,7 @@
         border-bottom-right-radius: 36px;
       }
       .hero-inner {
-        padding: 22px 32px 32px;
+        padding: 24px 32px 32px;
       }
       .hero-title {
         font-size: 32px;
@@ -468,10 +514,22 @@
         <div class="hero-title">露自在 · 森林露營行程</div>
         <div class="hero-subtitle">5 天 4 夜 · 單人自駕 · 北歐森林風計畫，幫你把每天要做什麼、要吃什麼、要走到哪裡，都整理在同一頁。</div>
         <div class="hero-chips">
-          <div class="hero-chip">🌲 山林慢活</div>
-          <div class="hero-chip">🧑‍🦺 獨旅友善</div>
-          <div class="hero-chip">💚 糖友友善飲食</div>
-          <div class="hero-chip">🚗 自駕導航一鍵開圖</div>
+          <div class="hero-chip">
+            <span class="chip-icon chip-icon-forest">森</span>
+            <span>山林慢活</span>
+          </div>
+          <div class="hero-chip">
+            <span class="chip-icon chip-icon-solo">一</span>
+            <span>獨旅友善</span>
+          </div>
+          <div class="hero-chip">
+            <span class="chip-icon chip-icon-health">心</span>
+            <span>糖友友善飲食</span>
+          </div>
+          <div class="hero-chip">
+            <span class="chip-icon chip-icon-drive">↺</span>
+            <span>自駕導航一鍵開圖</span>
+          </div>
         </div>
         <div class="hero-actions">
           <button class="hero-cta" type="button" onclick="scrollToFirstDay()">
@@ -841,6 +899,7 @@
   }
 
   function renderTrip() {
+    // 上方 D1~D5 Tab
     tripDays.forEach((day, idx) => {
       const tab = document.createElement('button');
       tab.type = 'button';
@@ -862,6 +921,7 @@
       dayTabs.appendChild(tab);
     });
 
+    // 每日卡片
     tripDays.forEach((day, idx) => {
       const sec = document.createElement('section');
       sec.className = 'day-card';
@@ -931,12 +991,13 @@
         if (item.notes) body.appendChild(notes);
         if ((item.tags || []).length) body.appendChild(tagRow);
 
+        // 導航按鈕：北歐手繪風小圓圖示
         if (item.mapQuery) {
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'nav-btn';
           btn.dataset.query = item.mapQuery;
-          btn.innerHTML = `<span>🚗 導航</span>`;
+          btn.innerHTML = `<span class="nav-icon">導</span><span>開啟導航</span>`;
           btn.addEventListener('click', () => openInMaps(item.mapQuery));
           body.appendChild(btn);
         }
