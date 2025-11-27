@@ -65,7 +65,7 @@
     .hero-inner {
       position: absolute;
       inset: 0;
-      padding: 18px 16px 22px;
+      padding: 16px 14px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -76,17 +76,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      font-size: 10px;
+      gap: 6px;
+      font-size: 9px;
       opacity: 0.96;
     }
 
     .hero-badge {
-      padding: 3px 10px;
+      padding: 2px 8px;
       border-radius: 999px;
       background: rgba(8,24,30,0.40);
       border: 1px solid rgba(196,211,214,0.75);
-      font-size: 10px;
+      font-size: 9px;
     }
 
     .hero-title-block {
@@ -95,7 +95,7 @@
     }
 
     .hero-title {
-      font-size: 28px;
+      font-size: 26px;
       line-height: 1.2;
       letter-spacing: .08em;
       font-weight: 700;
@@ -103,39 +103,39 @@
     }
 
     .hero-subtitle {
-      font-size: 13px;
+      font-size: 12px;
       opacity: 0.9;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .hero-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 12px;
+      gap: 5px;
+      margin-bottom: 10px;
     }
 
     .hero-chip {
-      font-size: 10px;
-      padding: 3px 9px 3px 5px;
+      font-size: 9px;
+      padding: 2px 7px 2px 4px;
       border-radius: 999px;
       background: rgba(236,244,246,0.14);
       border: 1px solid rgba(205,222,227,0.8);
       backdrop-filter: blur(6px);
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
 
     .chip-icon {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       border-radius: 999px;
-      border: 1.3px solid rgba(236,246,246,0.95);
+      border: 1.2px solid rgba(236,246,246,0.95);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
       background: rgba(222,240,241,0.95);
       color: #214b52;
@@ -159,7 +159,7 @@
     .hero-cta {
       border-radius: 999px;
       border: none;
-      padding: 7px 16px;
+      padding: 6px 14px;
       font-size: 12px;
       font-weight: 600;
       background: #f5f7f8;
@@ -330,79 +330,71 @@
       color: var(--muted);
     }
 
-    /* 時間軸風格：左邊時間小方框，右邊內容 */
+    /* 時間軸：左側圓圈＋上下時間，右側內容 */
 
     .card-list {
       margin-top: 8px;
-      padding-left: 30px;
-      border-left: 1px solid var(--border-subtle);
+      padding-left: 0;
+      border-left: none;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     .item-card {
       position: relative;
-      padding-bottom: 6px;
+      display: flex;
+      gap: 12px;
+      padding: 4px 0 10px;
+    }
+
+    .item-left {
+      width: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #153257;
+    }
+
+    .time-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 999px;
+      border: 2px solid #9bc0b0;
+      margin-bottom: 4px;
+    }
+
+    .time-main {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .time-main.vertical {
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      line-height: 1;
+    }
+
+    .time-sub {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .item-right {
+      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 4px;
-      background: transparent;
-      border: none;
-    }
-
-    .item-card::before {
-      content: "";
-      position: absolute;
-      left: -6px;
-      top: 11px;
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      border: 2px solid #91aeb9; /* 藍綠圓點 */
-      background: #ffffff;
-    }
-
-    .strip { display: none; }
-
-    .item-body {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
       font-size: 13px;
     }
 
-    .item-top {
-      display: grid;
-      grid-template-columns: 82px minmax(0, 1fr);
-      align-items: flex-start;
-      column-gap: 12px;
-    }
-
-    .item-time-box {
-      grid-column: 1;
-      font-size: 12px;
-      font-weight: 600;
-      color: #224e5b;
-      border-radius: 8px;
-      border: 1px solid var(--border-subtle);
-      padding: 2px 6px;
-      background: #f7fafb;
-      text-align: center;
-      white-space: nowrap;
-    }
-
     .item-title {
-      grid-column: 2;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
-    }
-
-    .item-meta,
-    .item-notes,
-    .tag-row,
-    .nav-btn {
-      margin-left: 82px; /* 對齊標題欄 */
+      color: #153257;
     }
 
     .item-meta {
@@ -508,7 +500,7 @@
         padding: 24px 32px 28px;
       }
       .hero-title {
-        font-size: 30px;
+        font-size: 28px;
       }
       main {
         padding-inline: 24px;
@@ -587,7 +579,8 @@
       items: [
         {
           type: 'transport',
-          time: '08:30–11:00',
+          timeTop: '08:30',
+          timeBottom: '11:00',
           title: '台北出發，走國道3南下',
           place: '台北 → 中部方向',
           notes: '避開最尖峰的 7–8 點，沿途可在休息站上廁所、伸展一下。',
@@ -596,7 +589,8 @@
         },
         {
           type: 'sight',
-          time: '11:00–13:00',
+          timeTop: '11:00',
+          timeBottom: '13:00',
           title: '光復新村散步＋午餐',
           place: '光復新村',
           address: '臺中市霧峰區和平路2-3號',
@@ -609,7 +603,8 @@
         },
         {
           type: 'transport',
-          time: '13:00–13:40',
+          timeTop: '13:00',
+          timeBottom: '13:40',
           title: '霧峰 → 草屯楓康',
           place: '國3／中投公路',
           notes: '從霧峰往草屯方向移動，準備上山前一次買好幾天要用的食材。',
@@ -618,7 +613,8 @@
         },
         {
           type: 'food',
-          time: '13:40–14:30',
+          timeTop: '13:40',
+          timeBottom: '14:30',
           title: '楓康超市草屯店採買',
           place: '楓康超市 草屯店',
           address: '南投縣草屯鎮中興路38號',
@@ -630,7 +626,8 @@
         },
         {
           type: 'transport',
-          time: '14:30–15:30',
+          timeTop: '14:30',
+          timeBottom: '15:30',
           title: '草屯 → 鹿谷 → 露自在營區',
           place: '草屯 / 南投市 → 鹿谷',
           notes: '沿途山路開始變彎，放慢速度，保持精神輕鬆。若臨時需要廁所或小補給，可在鹿谷市區停一下。',
@@ -639,7 +636,8 @@
         },
         {
           type: 'sight',
-          time: '15:30 之後',
+          timeTop: '15:30',
+          timeBottom: '之後',
           title: '抵達露自在，搭帳＆看山放空',
           place: '露自在 · 杉林溪露營區',
           address: '南投縣鹿谷鄉羊仔灣',
@@ -662,7 +660,8 @@
       items: [
         {
           type: 'sight',
-          time: '早上',
+          timeTop: '早上',
+          timeBottom: '',
           title: '營區晨間慢活',
           place: '露自在營區',
           notes: '睡到自然醒、在營區走走、看霧散雲起。早餐可以是無糖豆漿＋水煮蛋＋少量地瓜或吐司，蔬菜可以順便當沙拉吃掉一部份。',
@@ -673,7 +672,8 @@
         },
         {
           type: 'food',
-          time: '中午',
+          timeTop: '中午',
+          timeBottom: '',
           title: '營地簡單午餐',
           place: '露自在營區',
           notes: '利用前一天買的菜，做一鍋蔬菜很多的湯或炒菜，搭配少量飯／地瓜。維持「半盤是菜」的盤子比例。',
@@ -684,7 +684,8 @@
         },
         {
           type: 'food',
-          time: '14:00–16:30',
+          timeTop: '14:00',
+          timeBottom: '16:30',
           title: '嶋嶋坐 Tauh-Tauh-Tse 咖啡',
           place: '嶋嶋坐咖啡',
           address: '南投縣鹿谷鄉興產路76-3號',
@@ -698,7 +699,8 @@
         },
         {
           type: 'sight',
-          time: '傍晚',
+          timeTop: '傍晚',
+          timeBottom: '',
           title: '回營區，晚餐與夜間靜下來',
           place: '露自在營區',
           notes: '可以提早洗澡、伸展，讓晚上有多一點完全安靜的時間。晚餐可做蔬菜鍋或一鍋料理，把易壞的食材優先消耗。',
@@ -720,7 +722,8 @@
       items: [
         {
           type: 'transport',
-          time: '08:30–09:00',
+          timeTop: '08:30',
+          timeBottom: '09:00',
           title: '營地出發前往溪頭',
           place: '露自在 → 溪頭自然教育園區',
           notes: '沿著杉林溪公路往回走接 151 縣道，山路彎多，慢慢開。',
@@ -729,7 +732,8 @@
         },
         {
           type: 'sight',
-          time: '09:00–13:00',
+          timeTop: '09:00',
+          timeBottom: '13:00',
           title: '溪頭竹林步道＆大學池一帶',
           place: '溪頭自然教育園區',
           address: '南投縣鹿谷鄉森林巷9號',
@@ -741,7 +745,8 @@
         },
         {
           type: 'food',
-          time: '13:30–15:00',
+          timeTop: '13:30',
+          timeBottom: '15:00',
           title: '菇神鹿谷店火鍋',
           place: '菇神 鹿谷店',
           address: '南投縣鹿谷鄉中正路二段350號',
@@ -755,8 +760,9 @@
         },
         {
           type: 'food',
-          time: '回程途中（選擇性）',
-          title: '視情況少量補給',
+          timeTop: '回程',
+          timeBottom: '',
+          title: '回程途中視情況少量補給',
           place: '鹿谷／南投市',
           notes: '如果冰箱裡食材還夠，就直接回營地休息即可；若有缺，可以在鹿谷小超市或南投市楓康簡單補充蔬菜。',
           mapQuery: null,
@@ -764,7 +770,8 @@
         },
         {
           type: 'sight',
-          time: '傍晚',
+          timeTop: '傍晚',
+          timeBottom: '',
           title: '回營地放鬆，整理今天衣物',
           place: '露自在營區',
           notes: '走完溪頭後難免疲累，回營地以「拉筋＋熱飲＋早睡」為主。可以順便洗掉運動量大的衣物，掛在帳邊通風。',
@@ -786,7 +793,8 @@
       items: [
         {
           type: 'transport',
-          time: '09:00–09:30',
+          timeTop: '09:00',
+          timeBottom: '09:30',
           title: '露自在出發前往杉林溪',
           place: '露自在 → 杉林溪',
           notes: '露自在本來就在通往杉林溪的路上，再往上開十多公里即可抵達園區入口。',
@@ -795,7 +803,8 @@
         },
         {
           type: 'sight',
-          time: '09:30–14:00',
+          timeTop: '09:30',
+          timeBottom: '14:00',
           title: '杉林溪森林步道＆瀑布',
           place: '杉林溪森林生態渡假園區',
           address: '南投縣竹山鎮溪山路6號',
@@ -807,7 +816,8 @@
         },
         {
           type: 'food',
-          time: '午餐',
+          timeTop: '午餐',
+          timeBottom: '',
           title: '園區內簡單午餐或自備乾糧',
           place: '杉林溪園區內',
           notes: '若園區餐廳選擇有限，可以自備水煮蛋、地瓜、堅果和小黃瓜條當午餐。記得帶足飲水，山上天氣乾又涼。',
@@ -818,7 +828,8 @@
         },
         {
           type: 'sight',
-          time: '14:00–15:00',
+          timeTop: '14:00',
+          timeBottom: '15:00',
           title: '回營地，分批收裝備',
           place: '露自在營區',
           notes: '先收不怕露水的裝備（備用椅、桌子、部分廚具），睡眠區最後一晚保持舒適。也可以留一點時間發呆，跟這片山道別。',
@@ -827,7 +838,8 @@
         },
         {
           type: 'food',
-          time: '晚餐',
+          timeTop: '晚餐',
+          timeBottom: '',
           title: '把剩餘食材變成最後一鍋',
           place: '露自在營區',
           notes: '把冰箱裡剩下的菜、蛋白質一次變成火鍋或炒菜，避免隔天還有一堆易壞食材要帶回台北。',
@@ -851,7 +863,8 @@
       items: [
         {
           type: 'sight',
-          time: '早上',
+          timeTop: '早上',
+          timeBottom: '',
           title: '早餐＆收帳，準備下山',
           place: '露自在營區',
           notes: '早餐維持簡單、高纖，收帳時注意不要太趕，保留一點喘息的時間。目標 11:00 前離開營區即可。',
@@ -860,7 +873,8 @@
         },
         {
           type: 'transport',
-          time: '約 11:00–12:00',
+          timeTop: '11:00',
+          timeBottom: '12:00',
           title: '露自在 → 草屯',
           place: '鹿谷 → 草屯',
           notes: '山路下坡多，記得多用低速檔與引擎煞車，不要長時間緊踩煞車。',
@@ -869,7 +883,8 @@
         },
         {
           type: 'sight',
-          time: '12:00–14:00',
+          timeTop: '12:00',
+          timeBottom: '14:00',
           title: '國立臺灣工藝研究發展中心',
           place: '臺灣工藝文化園區',
           address: '南投縣草屯鎮中正路573號',
@@ -881,7 +896,8 @@
         },
         {
           type: 'food',
-          time: '14:10',
+          timeTop: '14:10',
+          timeBottom: '',
           title: '美廉社草屯碧山店小補給',
           place: '美廉社 草屯碧山店',
           address: '南投縣草屯鎮碧山路756-5號',
@@ -893,7 +909,8 @@
         },
         {
           type: 'transport',
-          time: '14:30 之後',
+          timeTop: '14:30',
+          timeBottom: '之後',
           title: '草屯上國道，返回台北',
           place: '草屯 → 台北',
           notes: '若國道即時路況顯示很塞，可以考慮在草屯／台中多坐一下，晚點再上高速。回到平地後，記得調整衣著與保暖。',
@@ -963,15 +980,22 @@
         const card = document.createElement('div');
         card.className = 'item-card';
 
-        const body = document.createElement('div');
-        body.className = 'item-body';
+        const left = document.createElement('div');
+        left.className = 'item-left';
 
-        const top = document.createElement('div');
-        top.className = 'item-top';
-        top.innerHTML = `
-          <div class="item-time-box">${item.time || ''}</div>
-          <div class="item-title">${item.title}</div>
+        const vertical = (item.timeTop && !item.timeBottom && item.timeTop.length <= 2);
+        left.innerHTML = `
+          <div class="time-dot"></div>
+          ${item.timeTop ? `<div class="time-main${vertical ? ' vertical' : ''}">${item.timeTop}</div>` : ''}
+          ${item.timeBottom ? `<div class="time-sub">${item.timeBottom}</div>` : ''}
         `;
+
+        const right = document.createElement('div');
+        right.className = 'item-right';
+
+        const title = document.createElement('div');
+        title.className = 'item-title';
+        title.textContent = item.title;
 
         const meta = document.createElement('div');
         meta.className = 'item-meta';
@@ -992,10 +1016,10 @@
           tagRow.appendChild(span);
         });
 
-        body.appendChild(top);
-        if (place || addr) body.appendChild(meta);
-        if (item.notes) body.appendChild(notes);
-        if ((item.tags || []).length) body.appendChild(tagRow);
+        right.appendChild(title);
+        if (place || addr) right.appendChild(meta);
+        if (item.notes) right.appendChild(notes);
+        if ((item.tags || []).length) right.appendChild(tagRow);
 
         if (item.mapQuery) {
           const btn = document.createElement('button');
@@ -1004,10 +1028,11 @@
           btn.dataset.query = item.mapQuery;
           btn.innerHTML = `<span class="nav-icon">導</span><span>開啟導航</span>`;
           btn.addEventListener('click', () => openInMaps(item.mapQuery));
-          body.appendChild(btn);
+          right.appendChild(btn);
         }
 
-        card.appendChild(body);
+        card.appendChild(left);
+        card.appendChild(right);
         list.appendChild(card);
       });
 
