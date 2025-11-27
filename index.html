@@ -5,7 +5,7 @@
   <title>南投露自在 5 天 4 夜行程小工具</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 載入 Noto Sans TC：中文＆英文都乾淨簡潔 -->
+  <!-- Noto Sans TC：乾淨簡潔的中英文字體 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -17,9 +17,7 @@
       --muted: #8a9290;
       --accent: #356b5b;
       --accent-soft: #dbe8e1;
-      --card-bg: #ffffff;
-      --border-soft: #dde3de;
-      --shadow-soft: 0 10px 30px rgba(0,0,0,0.06);
+      --border-subtle: #e4ebe6;
 
       --tag-eat: #f6d8c3;
       --tag-order: #f6efc3;
@@ -37,9 +35,9 @@
       margin: 0;
       padding: 0;
       font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
-      background: #ffffff;
+      background: var(--bg);
       color: var(--fg);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .page {
@@ -51,19 +49,17 @@
 
     .hero {
       position: relative;
-      height: 65vh;
+      height: 64vh;
       min-height: 380px;
-      border-bottom-left-radius: 28px;
-      border-bottom-right-radius: 28px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
       overflow: hidden;
       background:
-        /* 淡淡綠色漸層讓文字清楚 */
-        linear-gradient(145deg, rgba(18,50,40,0.40), rgba(90,122,103,0.20)),
-        /* 北歐森林照片：之後換成自己的圖就改這一行 url */
+        linear-gradient(145deg, rgba(18,50,40,0.45), rgba(90,122,103,0.18)),
         url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80");
       background-size: cover;
       background-position: center;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
     }
 
     .hero-inner {
@@ -122,7 +118,7 @@
       font-size: 11px;
       padding: 4px 11px 4px 6px;
       border-radius: 999px;
-      background: rgba(244,248,245,0.10);
+      background: rgba(244,248,245,0.12);
       border: 1px solid rgba(210,222,214,0.7);
       backdrop-filter: blur(6px);
       display: inline-flex;
@@ -167,7 +163,7 @@
       font-weight: 600;
       background: #f5f7f4;
       color: #1a3d33;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      box-shadow: 0 7px 16px rgba(0,0,0,0.25);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -188,14 +184,14 @@
 
     .tabs-wrapper {
       margin-top: 10px;
-      padding-inline: 12px;
+      padding-inline: 16px;
     }
 
     .day-tabs {
       display: flex;
       overflow-x: auto;
-      gap: 10px;
-      padding: 10px 4px 14px;
+      gap: 8px;
+      padding: 10px 0 14px;
       scrollbar-width: none;
     }
     .day-tabs::-webkit-scrollbar { display: none; }
@@ -203,20 +199,20 @@
     .day-tab {
       flex: 0 0 auto;
       border-radius: 999px;
-      padding: 7px 14px;
+      padding: 6px 14px;
       font-size: 12px;
-      border: 1px solid rgba(80,112,98,0.3);
+      border: 1px solid rgba(80,112,98,0.26);
       color: var(--muted);
-      background: rgba(255,255,255,0.96);
+      background: #ffffff;
       display: flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
     }
 
     .day-tab strong {
       font-size: 13px;
       color: var(--fg);
+      letter-spacing: .04em;
     }
 
     .day-tab.active {
@@ -229,19 +225,17 @@
     }
 
     main {
-      padding: 0 12px 28px;
+      padding: 0 16px 32px;
     }
 
+    /* 每日區塊：不再是卡片，而是簡潔的段落＋底線 */
+
     section.day-card {
-      background: rgba(255,255,255,0.99);
-      border-radius: 22px;
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 22px;
-      padding: 16px 14px 14px;
-      border: 1px solid rgba(210,218,212,0.95);
+      padding: 18px 0 18px;
+      border-bottom: 1px solid var(--border-subtle);
       opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .45s ease, transform .45s ease;
+      transform: translateY(12px);
+      transition: opacity .4s ease, transform .4s ease;
     }
 
     section.day-card.visible {
@@ -254,7 +248,7 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 14px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .day-header-main {
@@ -266,7 +260,7 @@
     .day-title {
       font-size: 17px;
       font-weight: 700;
-      letter-spacing: .04em;
+      letter-spacing: .06em;
     }
 
     .day-subtitle {
@@ -274,9 +268,40 @@
       color: var(--muted);
     }
 
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .chip-location {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chip-location span {
+      font-size: 12px;
+    }
+
+    .badge-elev {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(130,150,139,0.4);
+      color: var(--muted);
+      background: rgba(250,252,250,0.95);
+    }
+
     .weather-badge {
       min-width: 132px;
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 6px 9px;
       background: linear-gradient(145deg, #e4ede7, #f2f7f3);
       display: flex;
@@ -304,64 +329,43 @@
       color: var(--muted);
     }
 
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 2px;
-    }
-
-    .chip-location {
-      font-size: 11px;
-      border-radius: 999px;
-      padding: 3px 9px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .chip-location span {
-      font-size: 12px;
-    }
-
-    .badge-elev {
-      font-size: 10px;
-      padding: 3px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(130,150,139,0.4);
-      color: var(--muted);
-      background: rgba(250,252,250,0.95);
-    }
+    /* 時間軸風格 */
 
     .card-list {
+      margin-top: 6px;
+      padding-left: 14px;
+      border-left: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 6px;
     }
 
     .item-card {
-      border-radius: 16px;
-      padding: 10px 11px;
-      border: 1px solid rgba(221,228,222,0.95);
-      background: rgba(250,252,251,0.98);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      column-gap: 10px;
+      position: relative;
+      padding-left: 12px;
+      padding-bottom: 4px;
+      background: transparent;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .item-card::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 9px;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      border: 2px solid #9fb3a7;
+      background: #ffffff;
     }
 
     .strip {
-      width: 4px;
-      border-radius: 999px;
-      margin-right: 4px;
-      margin-top: 2px;
+      display: none; /* 不再需要彩色側邊條 */
     }
-
-    .strip-sight { background: linear-gradient(180deg,#7fa48a,#4d7a63); }
-    .strip-food { background: linear-gradient(180deg,#f3b48a,#c97a39); }
-    .strip-transport { background: linear-gradient(180deg,#9eb4c9,#5b7a9d); }
 
     .item-body {
       display: flex;
@@ -395,7 +399,7 @@
 
     .item-notes {
       font-size: 13px;
-      line-height: 1.8;
+      line-height: 1.85;
       color: #343c3a;
     }
 
@@ -403,7 +407,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .tag {
@@ -419,25 +423,24 @@
     .tag-health { background: var(--tag-health); }
 
     .nav-btn {
-      margin-top: 6px;
+      margin-top: 5px;
       align-self: flex-start;
       border-radius: 999px;
-      border: none;
-      padding: 5px 11px;
+      border: 1px solid #c6d6ce;
+      padding: 4px 10px;
       font-size: 11px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #1b4e3b;
-      color: #f6fbf8;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      background: #ecf3ef;
+      color: #1f3b30;
+      box-shadow: none;
     }
 
     .nav-btn span {
       font-size: 12px;
     }
 
-    /* 導航按鈕的小圓圖示（北歐手繪風） */
     .nav-icon {
       width: 18px;
       height: 18px;
@@ -453,8 +456,8 @@
     }
 
     .legend {
-      margin: 10px 8px 4px;
-      padding-top: 9px;
+      margin: 12px 2px 6px;
+      padding-top: 10px;
       border-top: 1px dashed rgba(188,200,193,0.9);
       display: flex;
       flex-wrap: wrap;
@@ -478,7 +481,7 @@
     }
 
     footer.app-footer {
-      padding: 0 16px 22px;
+      padding: 4px 16px 22px;
       font-size: 10px;
       color: var(--muted);
       text-align: center;
@@ -486,9 +489,9 @@
 
     @media (min-width: 768px) {
       .hero {
-        height: 78vh;
-        border-bottom-left-radius: 36px;
-        border-bottom-right-radius: 36px;
+        height: 76vh;
+        border-bottom-left-radius: 28px;
+        border-bottom-right-radius: 28px;
       }
       .hero-inner {
         padding: 24px 32px 32px;
@@ -497,6 +500,9 @@
         font-size: 32px;
       }
       main {
+        padding-inline: 24px;
+      }
+      .tabs-wrapper {
         padding-inline: 24px;
       }
     }
@@ -536,7 +542,7 @@
             <span>↓</span> 查看每日行程
           </button>
           <div class="hero-scroll-hint">
-            <span>往下滑會看到 D1–D5 詳細卡片與天氣</span>
+            <span>往下滑會看到 D1–D5 詳細安排與天氣</span>
           </div>
         </div>
       </div>
@@ -555,7 +561,7 @@
 </div>
 
 <script>
-  // ---- 行程資料：如果之後想改內容，只要改這一段 ----
+  // ---- 行程資料 ----
   const tripDays = [
     {
       id: 'day1',
@@ -899,7 +905,7 @@
   }
 
   function renderTrip() {
-    // 上方 D1~D5 Tab
+    // Tabs
     tripDays.forEach((day, idx) => {
       const tab = document.createElement('button');
       tab.type = 'button';
@@ -921,7 +927,7 @@
       dayTabs.appendChild(tab);
     });
 
-    // 每日卡片
+    // 每日內容
     tripDays.forEach((day, idx) => {
       const sec = document.createElement('section');
       sec.className = 'day-card';
@@ -991,7 +997,6 @@
         if (item.notes) body.appendChild(notes);
         if ((item.tags || []).length) body.appendChild(tagRow);
 
-        // 導航按鈕：北歐手繪風小圓圖示
         if (item.mapQuery) {
           const btn = document.createElement('button');
           btn.type = 'button';
