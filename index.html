@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #f4f4f1;
+      --bg: #ffffff;
       --fg: #222827;
       --muted: #6f7774;
       --accent: #356b5b;
@@ -31,7 +31,7 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
-      background: var(--bg);
+      background: #ffffff;
       color: var(--fg);
     }
 
@@ -44,19 +44,19 @@
 
     .hero {
       position: relative;
-      height: 70vh;
-      min-height: 420px;
+      height: 65vh;
+      min-height: 380px;
       border-bottom-left-radius: 28px;
       border-bottom-right-radius: 28px;
       overflow: hidden;
       background:
-        linear-gradient(145deg, rgba(13,32,26,0.75), rgba(45,74,63,0.4)),
-        /* ⬇️ 這行是示意照片網址，之後你可以改成自己的照片 */
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80")
-      ;
+        /* 淡淡綠色漸層讓文字清楚 */
+        linear-gradient(145deg, rgba(18,50,40,0.45), rgba(90,122,103,0.18)),
+        /* 北歐森林照片：之後換成自己的圖就改這一行 url */
+        url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80");
       background-size: cover;
       background-position: center;
-      box-shadow: 0 18px 35px rgba(0,0,0,0.20);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
     }
 
     .hero-inner {
@@ -156,7 +156,7 @@
     /* Day tabs + 內容 */
 
     .tabs-wrapper {
-      margin-top: -26px;
+      margin-top: 8px;       /* 不再疊到 hero 上 */
       padding-inline: 12px;
     }
 
