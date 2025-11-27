@@ -2,19 +2,18 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <title>南投露營旅程小工具｜露自在 12/1–12/5</title>
+  <title>南投露自在 5 天 4 夜行程小工具</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #f3f5f2;
-      --bg-alt: #e6eee7;
-      --fg: #1f2a2c;
-      --muted: #6b7575;
-      --accent: #3b6a5a;
-      --accent-soft: #d8e9e1;
+      --bg: #f4f4f1;
+      --fg: #222827;
+      --muted: #6f7774;
+      --accent: #356b5b;
+      --accent-soft: #dbe8e1;
       --card-bg: #ffffff;
-      --border-soft: #d4ddd7;
-      --shadow-soft: 0 8px 18px rgba(0,0,0,0.06);
+      --border-soft: #d3ddd6;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
 
       --tag-eat: #f6d8c3;
       --tag-order: #f6efc3;
@@ -32,64 +31,140 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
-      background: radial-gradient(circle at top, #e3efe7 0, #f6f8f6 45%, #f3f5f2 100%);
+      background: var(--bg);
       color: var(--fg);
     }
 
-    .app {
-      max-width: 720px;
+    .page {
+      max-width: 900px;
       margin: 0 auto;
-      min-height: 100vh;
-      padding-bottom: 24px;
     }
 
-    header.app-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(145deg, rgba(232,241,236,0.96), rgba(245,247,244,0.96));
-      border-bottom: 1px solid rgba(180,193,187,0.5);
-      padding: 12px 16px 10px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    /* Hero 區塊：大照片 */
+
+    .hero {
+      position: relative;
+      height: 70vh;
+      min-height: 420px;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(13,32,26,0.75), rgba(45,74,63,0.4)),
+        /* ⬇️ 這行是示意照片網址，之後你可以改成自己的照片 */
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80")
+      ;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.20);
     }
 
-    .logo-circle {
-      width: 36px;
-      height: 36px;
-      border-radius: 18px;
-      background: radial-gradient(circle at 30% 20%, #ffffff, #c9ddcf);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      font-size: 20px;
-    }
-
-    .app-title-group {
+    .hero-inner {
+      position: absolute;
+      inset: 0;
+      padding: 18px 18px 26px;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      justify-content: space-between;
+      color: #f7fbf9;
     }
 
-    .app-title {
-      font-size: 17px;
+    .hero-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      opacity: 0.95;
+    }
+
+    .hero-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(8,20,16,0.35);
+      border: 1px solid rgba(198,211,202,0.6);
+    }
+
+    .hero-title-block {
+      max-width: 320px;
+      margin-top: auto;
+    }
+
+    .hero-title {
+      font-size: 28px;
+      line-height: 1.16;
+      letter-spacing: .06em;
       font-weight: 700;
-      letter-spacing: .02em;
+      margin-bottom: 6px;
     }
 
-    .app-subtitle {
-      font-size: 12px;
-      color: var(--muted);
+    .hero-subtitle {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .hero-chip {
+      font-size: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(244,248,245,0.15);
+      border: 1px solid rgba(210,222,214,0.7);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
+    .hero-cta {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      background: #f5f7f4;
+      color: #1a3d33;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-cta span {
+      font-size: 14px;
+    }
+
+    .hero-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Day tabs + 內容 */
+
+    .tabs-wrapper {
+      margin-top: -26px;
+      padding-inline: 12px;
     }
 
     .day-tabs {
       display: flex;
       overflow-x: auto;
       gap: 8px;
-      padding: 8px 12px 10px;
+      padding: 8px 4px 12px;
       background: transparent;
       scrollbar-width: none;
     }
@@ -102,10 +177,11 @@
       font-size: 12px;
       border: 1px solid rgba(80,112,98,0.3);
       color: var(--muted);
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.95);
       display: flex;
       align-items: center;
       gap: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
     }
 
     .day-tab strong {
@@ -123,16 +199,24 @@
     }
 
     main {
-      padding: 8px 12px 24px;
+      padding: 0 12px 28px;
     }
 
     section.day-card {
-      background: rgba(255,255,255,0.9);
-      border-radius: 20px;
+      background: rgba(255,255,255,0.98);
+      border-radius: 22px;
       box-shadow: var(--shadow-soft);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       padding: 14px 14px 12px;
-      border: 1px solid rgba(189,203,195,0.7);
+      border: 1px solid rgba(189,203,195,0.9);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+
+    section.day-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .day-header {
@@ -150,7 +234,7 @@
     }
 
     .day-title {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: .03em;
     }
@@ -161,10 +245,10 @@
     }
 
     .weather-badge {
-      min-width: 120px;
+      min-width: 130px;
       border-radius: 14px;
       padding: 6px 8px;
-      background: linear-gradient(145deg, #dfece5, #eef5f1);
+      background: linear-gradient(145deg, #e2ece6, #f0f6f2);
       display: flex;
       flex-direction: column;
       gap: 2px;
@@ -229,10 +313,10 @@
     }
 
     .item-card {
-      border-radius: 14px;
-      padding: 8px 10px;
-      border: 1px solid rgba(210,219,214,0.9);
-      background: rgba(250,252,251,0.95);
+      border-radius: 16px;
+      padding: 9px 10px;
+      border: 1px solid rgba(210,219,214,0.95);
+      background: rgba(250,252,251,0.97);
       display: grid;
       grid-template-columns: auto 1fr;
       column-gap: 10px;
@@ -281,7 +365,7 @@
     .item-notes {
       font-size: 12px;
       line-height: 1.4;
-      color: #364240;
+      color: #37413f;
     }
 
     .tag-row {
@@ -323,7 +407,7 @@
     }
 
     .legend {
-      margin: 12px 4px 4px;
+      margin: 10px 8px 4px;
       padding-top: 8px;
       border-top: 1px dashed rgba(170,184,176,0.7);
       display: flex;
@@ -339,7 +423,7 @@
       gap: 4px;
       border-radius: 999px;
       padding: 2px 6px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.9);
       border: 1px solid rgba(210,219,214,0.9);
     }
 
@@ -348,33 +432,62 @@
     }
 
     footer.app-footer {
-      padding: 0 16px;
+      padding: 0 16px 20px;
       font-size: 10px;
       color: var(--muted);
       text-align: center;
     }
 
-    @media (min-width: 760px) {
-      main {
-        padding-inline: 20px;
+    @media (min-width: 768px) {
+      .hero {
+        height: 78vh;
+        border-bottom-left-radius: 36px;
+        border-bottom-right-radius: 36px;
       }
-      section.day-card {
-        padding: 16px 18px;
+      .hero-inner {
+        padding: 22px 32px 32px;
+      }
+      .hero-title {
+        font-size: 32px;
+      }
+      main {
+        padding-inline: 24px;
       }
     }
   </style>
 </head>
 <body>
-<div class="app">
-  <header class="app-header">
-    <div class="logo-circle">🌲</div>
-    <div class="app-title-group">
-      <div class="app-title">南投露營・露自在 5D4N</div>
-      <div class="app-subtitle">2025/12/1（一）– 12/5（五） · 單人自駕小旅行</div>
+<div class="page">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-top-row">
+        <div class="hero-badge">南投 · 鹿谷 · 杉林溪</div>
+        <div class="hero-badge">2025/12/1（一）– 12/5（五）</div>
+      </div>
+      <div class="hero-title-block">
+        <div class="hero-title">露自在 · 森林露營行程</div>
+        <div class="hero-subtitle">5 天 4 夜 · 單人自駕 · 北歐森林風計畫，幫你把每天要做什麼、要吃什麼、要走到哪裡，都整理在同一頁。</div>
+        <div class="hero-chips">
+          <div class="hero-chip">🌲 山林慢活</div>
+          <div class="hero-chip">🧑‍🦺 獨旅友善</div>
+          <div class="hero-chip">💚 糖友友善飲食</div>
+          <div class="hero-chip">🚗 自駕導航一鍵開圖</div>
+        </div>
+        <div class="hero-actions">
+          <button class="hero-cta" type="button" onclick="scrollToFirstDay()">
+            <span>↓</span> 查看每日行程
+          </button>
+          <div class="hero-scroll-hint">
+            <span>往下滑會看到 D1–D5 詳細卡片與天氣</span>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <nav class="day-tabs" id="dayTabs"></nav>
+  <div class="tabs-wrapper">
+    <nav class="day-tabs" id="dayTabs"></nav>
+  </div>
 
   <main id="dayContainer"></main>
 
@@ -384,7 +497,7 @@
 </div>
 
 <script>
-  // ---- 行程資料：你之後如果要改，只要改這一段 ----
+  // ---- 行程資料：如果之後想改內容，只要改這一段 ----
   const tripDays = [
     {
       id: 'day1',
@@ -393,7 +506,7 @@
       title: '台北 → 霧峰光復新村 → 鹿谷露自在',
       subtitle: '下中部、吃午餐、補給後上山安頓',
       mainLocationLabel: '鹿谷一帶',
-      lat: 23.74639,    // 鹿谷附近座標
+      lat: 23.74639,
       lon: 120.7525,
       elevationNote: '約 800–1,000m，早晚偏涼',
       items: [
@@ -526,7 +639,7 @@
       title: '溪頭自然教育園區＋菇神火鍋',
       subtitle: '半日森林步道，半日吃菇菇補元氣',
       mainLocationLabel: '溪頭自然教育園區',
-      lat: 23.6745,     // 溪頭官方座標
+      lat: 23.6745,
       lon: 120.79725,
       elevationNote: '約 1,150m，氣溫較涼，注意保暖',
       items: [
@@ -592,7 +705,7 @@
       title: '杉林溪健走＋最後一晚收心',
       subtitle: '高海拔森林、瀑布與花卉中心',
       mainLocationLabel: '杉林溪森林生態渡假園區',
-      lat: 23.63947,   // 杉林溪附近座標
+      lat: 23.63947,
       lon: 120.79221,
       elevationNote: '約 1,600–1,800m，日夜溫差大',
       items: [
@@ -657,7 +770,7 @@
       title: '退營 → 草屯工藝中心 → 台北',
       subtitle: '下山前的文化補給＋伴手禮時間',
       mainLocationLabel: '草屯 · 南投平地',
-      lat: 23.9733,   // 草屯附近
+      lat: 23.9733,
       lon: 120.6843,
       elevationNote: '平地氣溫回暖，上下溫差要留意',
       items: [
@@ -716,8 +829,6 @@
     }
   ];
 
-  // ---- UI & 功能：產生卡片、導航、天氣 ----
-
   const dayContainer = document.getElementById('dayContainer');
   const dayTabs = document.getElementById('dayTabs');
 
@@ -730,7 +841,6 @@
   }
 
   function renderTrip() {
-    // 產生 Day Tabs
     tripDays.forEach((day, idx) => {
       const tab = document.createElement('button');
       tab.type = 'button';
@@ -743,13 +853,15 @@
           .forEach(el => el.classList.toggle('active', el === tab));
         const target = document.getElementById(day.id);
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
         }
       });
       dayTabs.appendChild(tab);
     });
 
-    // 產生各日卡片
     tripDays.forEach((day, idx) => {
       const sec = document.createElement('section');
       sec.className = 'day-card';
@@ -839,7 +951,6 @@
       dayContainer.appendChild(sec);
     });
 
-    // 標籤 legend
     const legend = document.createElement('div');
     legend.className = 'legend';
     legend.innerHTML = `
@@ -858,7 +969,15 @@
     window.open(url, '_blank');
   }
 
-  // ---- 天氣：使用 Open-Meteo API 讀取目前天氣 ----
+  function scrollToFirstDay() {
+    const first = document.getElementById('day1');
+    if (!first) return;
+    window.scrollTo({
+      top: first.offsetTop - 80,
+      behavior: 'smooth'
+    });
+  }
+
   const weatherCodeText = (code) => {
     if (code === 0) return '晴朗';
     if ([1,2,3].includes(code)) return '多雲／陰';
@@ -904,9 +1023,23 @@
     }
   }
 
+  function setupReveal() {
+    const cards = document.querySelectorAll('.day-card');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach(c => io.observe(c));
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     renderTrip();
     loadWeather();
+    setupReveal();
   });
 </script>
 </body>
