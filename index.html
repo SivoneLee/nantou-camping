@@ -24,6 +24,10 @@
       --tag-souvenir: #d4e1ff;
       --tag-reserve: #f6c6d9;
       --tag-health: #cfe9d7;
+
+      --nav-bg: #f8d9b0;         /* 導航按鈕底色：暖橘 */
+      --nav-border: #e4b885;     /* 導航按鈕邊線 */
+      --nav-text: #5b3a1c;       /* 導航按鈕文字：深咖啡 */
     }
 
     * {
@@ -51,8 +55,6 @@
       position: relative;
       height: 56vh;
       min-height: 340px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
       overflow: hidden;
       background:
         linear-gradient(145deg, rgba(10,35,40,0.55), rgba(61,112,121,0.24)),
@@ -202,12 +204,13 @@
       border-radius: 999px;
       padding: 5px 13px;
       font-size: 11px;
-      border: 1px solid rgba(70,104,117,0.32);
+      border: 1.4px solid rgba(70,104,117,0.42);
       color: var(--muted);
       background: #ffffff;
       display: flex;
       align-items: center;
       gap: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
     }
 
     .day-tab strong {
@@ -219,7 +222,8 @@
     .day-tab.active {
       background: var(--accent);
       color: #fdfefc;
-      border-color: transparent;
+      border-color: rgba(24,61,71,0.9);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.14);
     }
     .day-tab.active strong {
       color: #ffffff;
@@ -427,19 +431,21 @@
     .tag-reserve { background: var(--tag-reserve); }
     .tag-health { background: var(--tag-health); }
 
+    /* 導航按鈕：暖橘撞色 */
+
     .nav-btn {
       margin-top: 5px;
       align-self: flex-start;
       border-radius: 999px;
-      border: 1px solid #c3d6d6;
-      padding: 4px 10px;
+      border: 1px solid var(--nav-border);
+      padding: 4px 11px;
       font-size: 11px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #ecf3f2;
-      color: #1f3b40;
-      box-shadow: none;
+      background: var(--nav-bg);
+      color: var(--nav-text);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
     }
 
     .nav-btn span {
@@ -450,14 +456,14 @@
       width: 18px;
       height: 18px;
       border-radius: 999px;
-      border: 1.3px solid rgba(231,241,235,0.96);
-      background: rgba(225,237,231,0.98);
+      border: 1.3px solid var(--nav-border);
+      background: #fffdf8;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 11px;
       font-weight: 700;
-      color: #163428;
+      color: var(--nav-text);
     }
 
     .legend {
@@ -486,10 +492,18 @@
     }
 
     footer.app-footer {
-      padding: 4px 16px 22px;
+      padding: 6px 16px 22px;
       font-size: 10px;
       color: var(--muted);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    footer.app-footer .credit {
+      opacity: 0.7;
+      letter-spacing: .04em;
     }
 
     @media (min-width: 768px) {
@@ -559,7 +573,8 @@
   <main id="dayContainer"></main>
 
   <footer class="app-footer">
-    小提醒：天氣資訊來自 Open-Meteo 免費 API，需有網路才能更新。導航按鈕會開啟 Google Maps。
+    <div>小提醒：天氣資訊來自 Open-Meteo 免費 API，需有網路才能更新。導航按鈕會開啟 Google Maps。</div>
+    <div class="credit">For personal use · 2025 · sivonelee × ChatGPT (GPT-5.1 Thinking)</div>
   </footer>
 </div>
 
