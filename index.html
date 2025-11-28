@@ -523,99 +523,95 @@
         padding-inline: 24px;
       }
     }
-  /* === 修正：時間欄位中文顛倒問題 === */
-/* 不管之前怎麼設定，只要是時間欄位，一律改回正常橫排 */
 
-/* 左邊那一整條「時間區」— 包含 08:30 / 11:00 或 早上／午中  */
-.time-col,
-.time-text,
-.time-label {
-  writing-mode: horizontal-tb !important;
-  transform: none !important;
-}
+    /* === 修正：時間欄位中文顛倒問題 === */
+    .time-col,
+    .time-text,
+    .time-label {
+      writing-mode: horizontal-tb !important;
+      transform: none !important;
+    }
 
-/* 如果你是用 .time-label 裝時間（包含兩行或一行） */
-.time-label {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;   /* 數字靠右對齊，看起來比較像行程表 */
-  justify-content: flex-start;
-  line-height: 1.2;
-  font-weight: 700;
-}
+    .time-label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      line-height: 1.2;
+      font-weight: 700;
+    }
 
-/* 讓 08:30、11:00 各佔一行；如果只有「早上」就只會顯示一行 */
-.time-label span {
-  display: block;
-}
+    .time-label span {
+      display: block;
+    }
 
-/* 有些版本我可能幫你取名叫 .time-range 或 .timeline-time，順便一起修正 */
-.time-range,
-.timeline-time {
-  writing-mode: horizontal-tb !important;
-  transform: none !important;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  line-height: 1.2;
-}
+    .time-range,
+    .timeline-time {
+      writing-mode: horizontal-tb !important;
+      transform: none !important;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      line-height: 1.2;
+    }
 
-.time-range span,
-.timeline-time span {
-  display: block;
-}
-  /* === 每日底部：回到上方行程按鈕（北歐簡約風） === */
-.day-back-wrapper {
-  margin: 40px 0 32px;
-  display: flex;
-  justify-content: center;
-}
+    .time-range span,
+    .timeline-time span {
+      display: block;
+    }
 
-.day-back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(12, 61, 76, 0.18);
-  background: rgba(255, 255, 255, 0.96);
-  color: #1f3e4c;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  box-shadow: 0 8px 18px rgba(16, 52, 63, 0.12);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-}
+    /* === 每日底部：回到上方行程按鈕（北歐簡約風） === */
+    .day-back-wrapper {
+      margin: 40px 0 32px;
+      display: flex;
+      justify-content: center;
+    }
 
-.day-back-button-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background: #1d4a57;        /* 深一點的北歐藍綠 */
-  color: #fdfbf6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-}
+    .day-back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(12, 61, 76, 0.18);
+      background: rgba(255, 255, 255, 0.96);
+      color: #1f3e4c;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(16, 52, 63, 0.12);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
 
-.day-back-button-label {
-  white-space: nowrap;
-}
+    .day-back-button-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: #1d4a57;
+      color: #fdfbf6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
 
-.day-back-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(16, 52, 63, 0.18);
-  background: rgba(252, 252, 252, 0.98);
-}
+    .day-back-button-label {
+      white-space: nowrap;
+    }
 
-.day-back-button:active {
-  transform: translateY(0);
-  box-shadow: 0 5px 12px rgba(16, 52, 63, 0.18);
-}
+    .day-back-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(16, 52, 63, 0.18);
+      background: rgba(252, 252, 252, 0.98);
+    }
+
+    .day-back-button:active {
+      transform: translateY(0);
+      box-shadow: 0 5px 12px rgba(16, 52, 63, 0.18);
+    }
   </style>
 </head>
 <body>
@@ -1146,6 +1142,18 @@
 
       sec.innerHTML = headerHtml;
       sec.appendChild(list);
+
+      // 每日底部「回到行程總覽」按鈕
+      const backWrapper = document.createElement('div');
+      backWrapper.className = 'day-back-wrapper';
+      backWrapper.innerHTML = `
+        <button class="day-back-button" type="button" onclick="scrollToTopSmooth()">
+          <span class="day-back-button-icon">↑</span>
+          <span class="day-back-button-label">回到行程總覽</span>
+        </button>
+      `;
+      sec.appendChild(backWrapper);
+
       dayContainer.appendChild(sec);
     });
 
@@ -1172,6 +1180,14 @@
     if (!first) return;
     window.scrollTo({
       top: first.offsetTop - 80,
+      behavior: 'smooth'
+    });
+  }
+
+  // 新增：平滑捲回最上方（給每日底部按鈕用）
+  function scrollToTopSmooth() {
+    window.scrollTo({
+      top: 0,
       behavior: 'smooth'
     });
   }
@@ -1239,14 +1255,6 @@
     loadWeather();
     setupReveal();
   });
-</script>
-  <script>
-  function scrollToTopSmooth() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
 </script>
 </body>
 </html>
