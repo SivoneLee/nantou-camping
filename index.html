@@ -49,7 +49,7 @@
       margin: 0 auto;
     }
 
-    /* Hero 區塊：大照片（下方不再圓角） */
+    /* Hero 區塊：大照片 */
 
     .hero {
       position: relative;
@@ -233,7 +233,7 @@
       padding: 0 16px 32px;
     }
 
-    /* 每日區塊：簡潔段落＋底線 */
+    /* 每日區塊 */
 
     section.day-card {
       padding: 18px 0 18px;
@@ -334,7 +334,7 @@
       color: var(--muted);
     }
 
-    /* 時間軸：左側 icon ＋上下時間，右側內容 */
+    /* 時間軸：左側 icon + 文字，右側內容 */
 
     .card-list {
       margin-top: 8px;
@@ -353,54 +353,69 @@
     }
 
     .item-left {
-      width: 56px;
+      width: 74px; /* 稍微加寬，讓大一點的 icon 與文字不擁擠 */
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 2px;
+      align-items: center;      /* icon + 文字一起置中 */
+      gap: 4px;
       font-size: 12px;
       font-weight: 700;
       color: #153257;
+      padding-top: 4px;         /* 讓 icon 頂端和右側標題大致齊頭 */
     }
 
-    /* 新版：只保留太陽／月亮字形，放大一點，沒有外圈 */
-    .time-dot {
-      margin-bottom: 6px;
+    /* 只有太陽／月亮，不要外圈 */
+
+    .time-icon-wrapper {
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;   /* 比原本 20px 圓圈略大 3–4px 的視覺感 */
-      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .time-icon {
+      font-size: 26px;      /* 放大一倍 */
       line-height: 1;
-      border: none;
-      background: transparent;
-      color: #124555;
+      font-weight: 900;     /* 線條更粗 */
     }
-    .time-dot-dawn {
-      color: #5b7fa6;  /* 清晨偏藍 */
+
+    .time-icon-wrapper--dawn  { color: #f1a45f; }   /* 清晨／早上：暖日出色 */
+    .time-icon-wrapper--day   { color: #1f6275; }   /* 白天：北歐藍綠 */
+    .time-icon-wrapper--night { color: #5a4c92; }   /* 傍晚／夜晚：靜謐紫藍 */
+
+    /* icon 下方的時間文字 */
+
+    .time-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;      /* 與 icon 置中 */
+      justify-content: flex-start;
+      line-height: 1.2;
+      font-weight: 700;
     }
-    .time-dot-day {
-      color: #2c7a68;  /* 白天偏綠藍 */
-    }
-    .time-dot-night {
-      color: #4c3f84;  /* 夜晚偏藍紫 */
+
+    .time-label span {
+      display: block;
     }
 
     .time-main {
       font-size: 12px;
-      font-weight: 700;
     }
 
     .time-main.vertical {
       writing-mode: vertical-rl;
       text-orientation: upright;
-      line-height: 1;
+      letter-spacing: 0.18em;
     }
 
     .time-sub {
       font-size: 12px;
-      font-weight: 700;
+      margin-top: 2px;
     }
+
+    /* 右側文字區塊 */
 
     .item-right {
       flex: 1;
@@ -440,11 +455,11 @@
       padding: 2px 6px;
       font-weight: 600;
     }
-    .tag-eat { background: var(--tag-eat); }
-    .tag-order { background: var(--tag-order); }
+    .tag-eat      { background: var(--tag-eat); }
+    .tag-order    { background: var(--tag-order); }
     .tag-souvenir { background: var(--tag-souvenir); }
-    .tag-reserve { background: var(--tag-reserve); }
-    .tag-health { background: var(--tag-health); }
+    .tag-reserve  { background: var(--tag-reserve); }
+    .tag-health   { background: var(--tag-health); }
 
     /* 導航按鈕：暖橘撞色 */
 
@@ -506,76 +521,8 @@
       margin: 0;
     }
 
-    footer.app-footer {
-      padding: 6px 16px 22px;
-      font-size: 10px;
-      color: var(--muted);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
+    /* 每日底部：回到上方行程按鈕 */
 
-    footer.app-footer .credit {
-      opacity: 0.7;
-      letter-spacing: .04em;
-    }
-
-    @media (min-width: 768px) {
-      .hero {
-        height: 60vh;
-      }
-      .hero-inner {
-        padding: 24px 32px 28px;
-      }
-      .hero-title {
-        font-size: 28px;
-      }
-      main {
-        padding-inline: 24px;
-      }
-      .tabs-wrapper {
-        padding-inline: 24px;
-      }
-    }
-
-    /* === 修正：時間欄位中文顛倒問題 === */
-    .time-col,
-    .time-text,
-    .time-label {
-      writing-mode: horizontal-tb !important;
-      transform: none !important;
-    }
-
-    .time-label {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: flex-start;
-      line-height: 1.2;
-      font-weight: 700;
-    }
-
-    .time-label span {
-      display: block;
-    }
-
-    .time-range,
-    .timeline-time {
-      writing-mode: horizontal-tb !important;
-      transform: none !important;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      line-height: 1.2;
-    }
-
-    .time-range span,
-    .timeline-time span {
-      display: block;
-    }
-
-    /* === 每日底部：回到上方行程按鈕（北歐簡約風） === */
     .day-back-wrapper {
       margin: 40px 0 32px;
       display: flex;
@@ -626,6 +573,39 @@
     .day-back-button:active {
       transform: translateY(0);
       box-shadow: 0 5px 12px rgba(16, 52, 63, 0.18);
+    }
+
+    footer.app-footer {
+      padding: 6px 16px 22px;
+      font-size: 10px;
+      color: var(--muted);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    footer.app-footer .credit {
+      opacity: 0.7;
+      letter-spacing: .04em;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        height: 60vh;
+      }
+      .hero-inner {
+        padding: 24px 32px 28px;
+      }
+      .hero-title {
+        font-size: 28px;
+      }
+      main {
+        padding-inline: 24px;
+      }
+      .tabs-wrapper {
+        padding-inline: 24px;
+      }
     }
   </style>
 </head>
@@ -1043,45 +1023,35 @@
   const dayContainer = document.getElementById('dayContainer');
   const dayTabs = document.getElementById('dayTabs');
 
-  // 根據時間文字，決定 icon 與顏色類別
-  function getTimeIconAndClass(timeTop, timeBottom) {
-    const label = (timeTop || '').trim();
+  // 根據時間決定太陽／月亮樣式
+  function getTimeIcon(item) {
+    let t = (item.timeTop || '').trim();
+    let symbol = '☀';
+    let className = 'time-icon-wrapper--day';
 
-    if (!label) {
-      return { icon: '•', cls: '' };
-    }
-
-    const dawnWords = ['清晨', '早上', '上午', '晨間'];
-    const nightWords = ['傍晚', '晚上', '夜間', '夜裡', '深夜'];
-    const dayWords = ['中午', '午間', '午餐'];
-
-    if (dawnWords.some(w => label.includes(w))) {
-      return { icon: '☼', cls: 'time-dot-dawn' };    // 柔和日出
-    }
-    if (nightWords.some(w => label.includes(w)) ||
-        label.includes('回程') ||
-        label.includes('之後')) {
-      return { icon: '☾', cls: 'time-dot-night' };   // 月亮
-    }
-    if (dayWords.some(w => label.includes(w))) {
-      return { icon: '☼', cls: 'time-dot-day' };     // 同一顆太陽，但顏色更飽和
-    }
-
-    // 若是 08:30 這種格式，依時段判斷
-    const m = label.match(/^(\d{1,2}):(\d{2})$/);
-    if (m) {
-      const hour = parseInt(m[1], 10);
-      if (hour < 7) {
-        return { icon: '☼', cls: 'time-dot-dawn' };
-      } else if (hour < 18) {
-        return { icon: '☼', cls: 'time-dot-day' };
-      } else {
-        return { icon: '☾', cls: 'time-dot-night' };
+    if (t.includes('早') || t.includes('晨')) {
+      symbol = '☀';
+      className = 'time-icon-wrapper--dawn';
+    } else if (t.includes('傍晚') || t.includes('晚') || t.includes('夜')) {
+      symbol = '☾';
+      className = 'time-icon-wrapper--night';
+    } else {
+      const m = t.match(/^(\d{1,2})/);
+      if (m) {
+        const h = parseInt(m[1], 10);
+        if (h < 6 || h >= 18) {
+          symbol = '☾';
+          className = 'time-icon-wrapper--night';
+        } else if (h < 9) {
+          symbol = '☀';
+          className = 'time-icon-wrapper--dawn';
+        } else {
+          symbol = '☀';
+          className = 'time-icon-wrapper--day';
+        }
       }
     }
-
-    // 其他沒被抓到的，一律當白天
-    return { icon: '☼', cls: 'time-dot-day' };
+    return { symbol, className };
   }
 
   function renderTrip() {
@@ -1144,12 +1114,16 @@
         left.className = 'item-left';
 
         const vertical = (item.timeTop && !item.timeBottom && item.timeTop.length <= 2);
-        const { icon, cls } = getTimeIconAndClass(item.timeTop, item.timeBottom);
+        const iconInfo = getTimeIcon(item);
 
         left.innerHTML = `
-          <div class="time-dot ${cls}">${icon}</div>
-          ${item.timeTop ? `<div class="time-main${vertical ? ' vertical' : ''}">${item.timeTop}</div>` : ''}
-          ${item.timeBottom ? `<div class="time-sub">${item.timeBottom}</div>` : ''}
+          <div class="time-icon-wrapper ${iconInfo.className}">
+            <span class="time-icon">${iconInfo.symbol}</span>
+          </div>
+          <div class="time-label">
+            ${item.timeTop ? `<span class="time-main${vertical ? ' vertical' : ''}">${item.timeTop}</span>` : ''}
+            ${item.timeBottom ? `<span class="time-sub">${item.timeBottom}</span>` : ''}
+          </div>
         `;
 
         const right = document.createElement('div');
@@ -1201,16 +1175,17 @@
       sec.innerHTML = headerHtml;
       sec.appendChild(list);
 
-      // 每日底部：回到上方的按鈕
-      const backWrapper = document.createElement('div');
-      backWrapper.className = 'day-back-wrapper';
-      backWrapper.innerHTML = `
-        <button class="day-back-button" type="button" onclick="scrollToTopSmooth()">
+      // 每日底部「回到上方封面與 D1–D5」
+      const backWrap = document.createElement('div');
+      backWrap.className = 'day-back-wrapper';
+      backWrap.innerHTML = `
+        <button type="button" class="day-back-button">
           <span class="day-back-button-icon">↑</span>
           <span class="day-back-button-label">回到上方封面與 D1–D5</span>
         </button>
       `;
-      sec.appendChild(backWrapper);
+      backWrap.querySelector('button').addEventListener('click', scrollToTopSmooth);
+      sec.appendChild(backWrap);
 
       dayContainer.appendChild(sec);
     });
@@ -1238,6 +1213,13 @@
     if (!first) return;
     window.scrollTo({
       top: first.offsetTop - 80,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollToTopSmooth() {
+    window.scrollTo({
+      top: 0,
       behavior: 'smooth'
     });
   }
@@ -1272,7 +1254,7 @@
         const data = await res.json();
         if (!data.current) {
           mainEl.textContent = '天氣資料暫時無法取得';
-          return;
+          continue;
         }
         const t = Math.round(data.current.temperature_2m);
         const rh = data.current.relative_humidity_2m;
@@ -1305,13 +1287,6 @@
     loadWeather();
     setupReveal();
   });
-
-  function scrollToTopSmooth() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
 </script>
 </body>
 </html>
