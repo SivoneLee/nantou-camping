@@ -334,7 +334,7 @@
       color: var(--muted);
     }
 
-    /* 時間軸：左側圓圈＋上下時間，右側內容 */
+    /* 時間軸：左側 icon ＋上下時間，右側內容 */
 
     .card-list {
       margin-top: 8px;
@@ -363,12 +363,35 @@
       color: #153257;
     }
 
+    /* 新：時間 icon 取代原本綠色圓點（統一用線條太陽，中午顏色更飽和） */
     .time-dot {
-      width: 13px;
-      height: 13px;
+      width: 20px;
+      height: 20px;
       border-radius: 999px;
-      border: 2px solid #9bc0b0;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1.8px solid #7fb0a5;
+      color: #124555;
+      background: #e5f1ee;
+    }
+    .time-dot-dawn {
+      background: #e9f1f7;
+      border-color: #7ca0c2;
+      color: #23425b;
+    }
+    .time-dot-day {
+      background: #e1efe9;
+      border-color: #5fa294;
+      color: #0f3e48;
+    }
+    .time-dot-night {
+      background: #e8e4f3;
+      border-color: #8d87b5;
+      color: #2e2948;
     }
 
     .time-main {
@@ -1028,6 +1051,47 @@
   const dayContainer = document.getElementById('dayContainer');
   const dayTabs = document.getElementById('dayTabs');
 
+  // 根據時間文字，決定 icon 與顏色類別
+  function getTimeIconAndClass(timeTop, timeBottom) {
+    const label = (timeTop || '').trim();
+
+    if (!label) {
+      return { icon: '•', cls: '' };
+    }
+
+    const dawnWords = ['清晨', '早上', '上午', '晨間'];
+    const nightWords = ['傍晚', '晚上', '夜間', '夜裡', '深夜'];
+    const dayWords = ['中午', '午間', '午餐'];
+
+    if (dawnWords.some(w => label.includes(w))) {
+      return { icon: '☼', cls: 'time-dot-dawn' };    // 柔和日出
+    }
+    if (nightWords.some(w => label.includes(w)) ||
+        label.includes('回程') ||
+        label.includes('之後')) {
+      return { icon: '☾', cls: 'time-dot-night' };   // 月亮
+    }
+    if (dayWords.some(w => label.includes(w))) {
+      return { icon: '☼', cls: 'time-dot-day' };     // 同一顆太陽，但顏色更飽和
+    }
+
+    // 若是 08:30 這種格式，依時段判斷
+    const m = label.match(/^(\d{1,2}):(\d{2})$/);
+    if (m) {
+      const hour = parseInt(m[1], 10);
+      if (hour < 7) {
+        return { icon: '☼', cls: 'time-dot-dawn' };
+      } else if (hour < 18) {
+        return { icon: '☼', cls: 'time-dot-day' };
+      } else {
+        return { icon: '☾', cls: 'time-dot-night' };
+      }
+    }
+
+    // 其他沒被抓到的，一律當白天
+    return { icon: '☼', cls: 'time-dot-day' };
+  }
+
   function renderTrip() {
     // Tabs
     tripDays.forEach((day, idx) => {
@@ -1088,8 +1152,10 @@
         left.className = 'item-left';
 
         const vertical = (item.timeTop && !item.timeBottom && item.timeTop.length <= 2);
+        const { icon, cls } = getTimeIconAndClass(item.timeTop, item.timeBottom);
+
         left.innerHTML = `
-          <div class="time-dot"></div>
+          <div class="time-dot ${cls}">${icon}</div>
           ${item.timeTop ? `<div class="time-main${vertical ? ' vertical' : ''}">${item.timeTop}</div>` : ''}
           ${item.timeBottom ? `<div class="time-sub">${item.timeBottom}</div>` : ''}
         `;
@@ -1143,13 +1209,13 @@
       sec.innerHTML = headerHtml;
       sec.appendChild(list);
 
-      // 每日底部「回到行程總覽」按鈕
+      // 每日底部：回到上方的按鈕
       const backWrapper = document.createElement('div');
       backWrapper.className = 'day-back-wrapper';
       backWrapper.innerHTML = `
         <button class="day-back-button" type="button" onclick="scrollToTopSmooth()">
           <span class="day-back-button-icon">↑</span>
-          <span class="day-back-button-label">回到行程總覽</span>
+          <span class="day-back-button-label">回到上方封面與 D1–D5</span>
         </button>
       `;
       sec.appendChild(backWrapper);
@@ -1180,14 +1246,6 @@
     if (!first) return;
     window.scrollTo({
       top: first.offsetTop - 80,
-      behavior: 'smooth'
-    });
-  }
-
-  // 新增：平滑捲回最上方（給每日底部按鈕用）
-  function scrollToTopSmooth() {
-    window.scrollTo({
-      top: 0,
       behavior: 'smooth'
     });
   }
@@ -1255,6 +1313,13 @@
     loadWeather();
     setupReveal();
   });
+
+  function scrollToTopSmooth() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 </script>
 </body>
 </html>
